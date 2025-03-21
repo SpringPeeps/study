@@ -3,6 +3,7 @@ package com.group.libraryapp.controller.calculator;
 import com.group.libraryapp.dto.calculator.request.CalculatorAddRequest;
 import com.group.libraryapp.dto.calculator.request.CalculatorCalcResponse;
 import com.group.libraryapp.dto.calculator.request.CalculatorMultiplyRequest;
+import com.group.libraryapp.dto.calculator.request.CalculatorSumResponse;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -48,5 +49,15 @@ public class CalculatorController {
             response.put("error", "잘못된 날짜 형식입니다. (예: 2023-01-01)");
         }
         return response;
+    }
+
+    // 추가 예제 -> 문제 3: 여러개의 숫자를 배열 형태로 입력받아 총합을 반환
+    @PostMapping("/sum")
+    public int sumArrayofNumbers(@RequestBody CalculatorSumResponse response) {
+        int sum = 0;
+        for (int num : response.getNumbers()) {
+            sum += num;
+        }
+        return sum;
     }
 }
