@@ -31,14 +31,11 @@ public class UserController {
     @GetMapping("/user") // GET /user
     public List<UserResponse> getUsers() {
         String sql = "SELECT * FROM user";
-        return jdbcTemplate.query(sql, new RowMapper<UserResponse>() {
-            @Override
-            public UserResponse mapRow(ResultSet rs, int rowNum) throws SQLException {
-                long id = rs.getLong("id");
-                String name = rs.getString("name");
-                int age = rs.getInt("age");
-                return new UserResponse(id, name, age);
-            }
+        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+            long id = rs.getLong("id");
+            String name = rs.getString("name");
+            int age = rs.getInt("age");
+            return new UserResponse(id, name, age);
         });
     }
 }
