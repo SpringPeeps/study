@@ -1,12 +1,11 @@
 package com.group.libraryapp.controller.calculator;
 
 import com.group.libraryapp.dto.calculator.request.CalculatorAddRequest;
-import com.group.libraryapp.dto.calculator.request.CalculatorCalcResponse;
+import com.group.libraryapp.dto.calculator.response.CalculatorCalcResponse;
 import com.group.libraryapp.dto.calculator.request.CalculatorMultiplyRequest;
-import com.group.libraryapp.dto.calculator.request.CalculatorSumResponse;
+import com.group.libraryapp.dto.calculator.response.CalculatorSumResponse;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;

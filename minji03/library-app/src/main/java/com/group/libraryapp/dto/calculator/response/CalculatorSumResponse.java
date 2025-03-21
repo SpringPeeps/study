@@ -1,4 +1,4 @@
-package com.group.libraryapp.dto.calculator.request;
+package com.group.libraryapp.dto.calculator.response;
 
 public class CalculatorSumResponse {
     private int[] numbers;
