@@ -4,6 +4,7 @@ public class UserCreateRequest {
     private String name;
     private Integer age = null;
 
+    public UserCreateRequest() {}
     public UserCreateRequest(String name) {
         this.name = name;
     }
