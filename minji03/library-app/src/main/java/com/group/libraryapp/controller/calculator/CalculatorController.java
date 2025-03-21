@@ -3,10 +3,12 @@ package com.group.libraryapp.controller.calculator;
 import com.group.libraryapp.dto.calculator.request.CalculatorAddRequest;
 import com.group.libraryapp.dto.calculator.request.CalculatorCalcResponse;
 import com.group.libraryapp.dto.calculator.request.CalculatorMultiplyRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class CalculatorController {
@@ -26,5 +28,25 @@ public class CalculatorController {
         int multiply = request.getNum1() * request.getNum2();
 
         return new CalculatorCalcResponse(sum, minus, multiply);
+    }
+
+    // 추가 예제 -> 문제 2: 날짜를 입력하면 요일을 JSON 형태로 반환하기
+    @GetMapping("/getdate")
+    public Map<String, String> getDate(@RequestParam String date) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            // 날짜 문자열을 LocalDate로 변환
+            LocalDate dateObject = LocalDate.parse(date);
+
+            // 요일 구하기 (첫 3글자만 반환)
+            String dayOfTheWeek = dateObject.getDayOfWeek().toString().substring(0, 3);
+
+            // JSON 응답 반환
+            response.put("dayOfTheWeek", dayOfTheWeek);
+
+        } catch (DateTimeParseException e) {
+            response.put("error", "잘못된 날짜 형식입니다. (예: 2023-01-01)");
+        }
+        return response;
     }
 }
