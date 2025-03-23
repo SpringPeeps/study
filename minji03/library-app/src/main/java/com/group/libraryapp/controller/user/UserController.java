@@ -43,14 +43,6 @@ public class UserController {
 
     @DeleteMapping("/user") // DELETE /user
     public void deleteUser(@RequestParam String name) {
-        // 수정하고자 하는 User가 데이터베이스에 존재하는지 검증
-        String sqlCheck = "SELECT * FROM user WHERE name = ?";
-        // user가 존재하지 않는다면 빈 리스트가 반환될 것임.
-        boolean isUserNotExist = jdbcTemplate.query(sqlCheck, (rs, rowNum) -> 0, name).isEmpty();
-        if (isUserNotExist) {
-            throw new IllegalArgumentException();
-        }
-        String sql = "DELETE FROM user WHERE name = ?";
-        jdbcTemplate.update(sql, name);
+        userService.deleteUser(name);
     }
 }

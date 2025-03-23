@@ -17,4 +17,11 @@ public class UserService {
         }
         userRepository.updateUserName(request.getName(), request.getId());
     }
+
+    public void deleteUser(String name) {
+        if (userRepository.isUserNotExist(name)) {
+            throw new IllegalArgumentException();
+        }
+        userRepository.deleteUser(name);
+    }
 }
