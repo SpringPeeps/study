@@ -3,6 +3,7 @@ package com.group.libraryapp.controller.user;
 import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
+import com.group.libraryapp.service.user.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +11,12 @@ import java.util.List;
 
 @RestController
 public class UserController {
+    private final UserService userService;
     private final JdbcTemplate jdbcTemplate;
 
     public UserController(JdbcTemplate jdbcTemplate) { // 생성자 추가
         this.jdbcTemplate = jdbcTemplate;
+        this.userService = new UserService(jdbcTemplate);
     }
 
     @PostMapping("/user") // POST /user
@@ -35,16 +38,7 @@ public class UserController {
 
     @PutMapping("/user") // PUT /user
     public void updateUser(@RequestBody UserUpdateRequest request) {
-        // 수정하고자 하는 User가 데이터베이스에 존재하는지 검증
-        String sqlCheck = "SELECT * FROM user WHERE id = ?";
-        // user가 존재하지 않는다면 빈 리스트가 반환될 것임.
-        boolean isUserNotExist = jdbcTemplate.query(sqlCheck, (rs, rowNum) -> 0, request.getId()).isEmpty();
-        if (isUserNotExist) {
-            throw new IllegalArgumentException();
-        }
-
-        String sql = "UPDATE user SET name = ? WHERE id = ?";
-        jdbcTemplate.update(sql, request.getName(), request.getId());
+        userService.updateUser(request);
     }
 
     @DeleteMapping("/user") // DELETE /user
