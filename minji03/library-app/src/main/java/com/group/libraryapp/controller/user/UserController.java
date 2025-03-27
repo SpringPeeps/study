@@ -3,20 +3,18 @@ package com.group.libraryapp.controller.user;
 import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
-import com.group.libraryapp.service.user.UserService;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.group.libraryapp.service.user.UserServiceV1;
+import com.group.libraryapp.service.user.UserServiceV2;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class UserController {
-    private final UserService userService;
-    private final JdbcTemplate jdbcTemplate;
+    private final UserServiceV2 userService;
 
-    public UserController(JdbcTemplate jdbcTemplate) { // 생성자 추가
-        this.jdbcTemplate = jdbcTemplate;
-        this.userService = new UserService(jdbcTemplate);
+    public UserController(UserServiceV2 userService) { // 생성자 추가
+        this.userService = userService;
     }
 
     @PostMapping("/user") // POST /user
