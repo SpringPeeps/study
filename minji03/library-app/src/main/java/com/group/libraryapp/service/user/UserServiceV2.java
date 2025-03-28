@@ -49,11 +49,10 @@ public class UserServiceV2 {
     @Transactional
     public void deleteUser(String name) {
         // 사용자 이름으로 유저 가져오기
-        User user = userRepository.findByName(name);
-        if (user != null) {
-            userRepository.delete(user);
-        } else {
-            throw new IllegalArgumentException("User not found");
-        }
+        User user = userRepository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        userRepository.delete(user);
     }
+
 }
