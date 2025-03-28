@@ -18,9 +18,14 @@ public class UserLoanHistory {
     private boolean isReturn; // 0 == false, 1 == true로 자동으로 매핑!
 
     protected UserLoanHistory() {};
+
     public UserLoanHistory(Long userId, String bookName) {
         this.userId = userId;
         this.bookName = bookName;
         this.isReturn = false;
+    }
+
+    public void doReturn() {
+        this.isReturn = true;
     }
 }
