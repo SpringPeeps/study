@@ -4,6 +4,7 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+<<<<<<< HEAD
         <option name="externalProjectPath" value="$PROJECT_DIR$/kyubo/library-app" />
         <option name="modules">
           <set>
@@ -12,6 +13,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+=======
+>>>>>>> 2f1a8bb8567d36bff047785191eac05420a2556a
         <option name="externalProjectPath" value="$PROJECT_DIR$/minji03/library-app" />
         <option name="modules">
           <set>
@@ -19,6 +22,17 @@
           </set>
         </option>
       </GradleProjectSettings>
+<<<<<<< HEAD
+=======
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mjk5949/library-app" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/mjk5949/library-app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+>>>>>>> 2f1a8bb8567d36bff047785191eac05420a2556a
     </option>
   </component>
 </project>

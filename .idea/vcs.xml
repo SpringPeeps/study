@@ -2,7 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$/kyubo" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/kyubo/library-app" vcs="Git" />
+=======
+>>>>>>> 2f1a8bb8567d36bff047785191eac05420a2556a
   </component>
 </project>
