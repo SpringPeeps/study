@@ -1,5 +1,4 @@
 .idea/
-/build/
+build/
 .gradle/
-.DS_Store
 application.yml
