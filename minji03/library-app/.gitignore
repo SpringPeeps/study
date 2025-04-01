@@ -2,3 +2,4 @@
 build/
 .gradle/
 application.yml
+sshkey.pem
