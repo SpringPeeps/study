@@ -64,7 +64,6 @@ jobs:
     - name: Copy JAR to EC2
       uses: appleboy/scp-action@v0.1.3
       with:
-        working-directory: minji03/library-app
         host: ${{ secrets.EC2_HOST }}
         username: ec2-user
         key: ${{ secrets.EC2_KEY }}
@@ -104,3 +103,6 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      with:
+        working-directory: minji03/library-app
+        gradle-wrapper-validation: false
