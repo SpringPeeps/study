@@ -38,7 +38,7 @@ public class UserServiceV2 {
     public void updateUser(UserUpdateRequest request) {
         // 1. id를 이용해 user를 가져와서 해당 user가 데이터베이스에 존재하는지 하지 않는지 확인
         User user = userRepository.findById(request.getId())
-                        .orElseThrow(); // IllegalAccessException::new 왜 오류나지..?
+                        .orElseThrow(); // IllegalAccessException::new 왜 오류나지..? 찾아볼것..
 
         // 2. user가 있다면 update 쿼리를 날려서 데이터를 수정
         user.updateName(request.getName());
