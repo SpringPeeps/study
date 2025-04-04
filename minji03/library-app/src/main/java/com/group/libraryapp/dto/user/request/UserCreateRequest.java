@@ -1,7 +1,5 @@
 package com.group.libraryapp.dto.user.request;
 
-//import lombok.Getter;
-
 //@Getter
 public class UserCreateRequest {
     private String name;
