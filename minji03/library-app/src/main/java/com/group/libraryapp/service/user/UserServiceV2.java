@@ -22,7 +22,7 @@ public class UserServiceV2 {
     @Transactional
     public void createUser(UserCreateRequest request) {
         User u = userRepository.save(new User(request.getName(), request.getAge()));
-//        throw new IllegalArgumentException(); // 저장은 됐는데 오류가 발생했으니 저장로직까지 전부 롤백되어서 저장이 안 될 것!
+//        throw new IllegalArgumentException(); // test: 저장은 됐는데 오류가 발생했으니 저장로직까지 전부 롤백되어서 저장이 안 될 것!
     }
 
     // 유저 조회 기능
