@@ -1,12 +1,13 @@
 package com.group.libraryapp.domain.user;
 
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+//@NoArgsConstructor(access = AccessLevel.PROTECTED) // ☑︎ 기본 생성자 대신 붙일 수 있음
 public class User {
     @Id // 이 필드를 PK로 간주한다는 의미
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동생성되는 값임을 의미
@@ -20,7 +21,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
-    protected User() {}
+    protected User() {} // ☑︎ Entity 클래스이므로 기본 생성자가 필요함
 
     public User(String name, Integer age) {
         // name은 NOT NULL 이므로 조건을 걸어야 함
