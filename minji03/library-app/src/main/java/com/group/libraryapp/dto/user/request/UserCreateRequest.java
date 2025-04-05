@@ -1,5 +1,6 @@
 package com.group.libraryapp.dto.user.request;
 
+//@Getter 붙일 수 있음
 public class UserCreateRequest {
     private String name;
     private Integer age = null;
@@ -16,4 +17,5 @@ public class UserCreateRequest {
     public Integer getAge() {
         return age;
     }
+
 }

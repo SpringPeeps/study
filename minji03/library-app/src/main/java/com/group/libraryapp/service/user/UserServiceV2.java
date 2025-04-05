@@ -22,7 +22,7 @@ public class UserServiceV2 {
     @Transactional
     public void createUser(UserCreateRequest request) {
         User u = userRepository.save(new User(request.getName(), request.getAge()));
-        throw new IllegalArgumentException(); // 저장은 됐는데 오류가 발생했으니 저장로직까지 전부 롤백되어서 저장이 안 될 것임.
+//        throw new IllegalArgumentException(); // test: 저장은 됐는데 오류가 발생했으니 저장로직까지 전부 롤백되어서 저장이 안 될 것!
     }
 
     // 유저 조회 기능
@@ -38,7 +38,7 @@ public class UserServiceV2 {
     public void updateUser(UserUpdateRequest request) {
         // 1. id를 이용해 user를 가져와서 해당 user가 데이터베이스에 존재하는지 하지 않는지 확인
         User user = userRepository.findById(request.getId())
-                        .orElseThrow(); // IllegalAccessException::new 왜 오류나지..?
+                        .orElseThrow(); // IllegalAccessException::new 왜 오류나지..? 찾아볼것..
 
         // 2. user가 있다면 update 쿼리를 날려서 데이터를 수정
         user.updateName(request.getName());
